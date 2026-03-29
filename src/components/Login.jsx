@@ -7,9 +7,9 @@ import {
 import { auth } from '../utils/firebase'
 import Header from './Header'
 import { checkValidateData } from '../utils/validate'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utils/userSlice'
+import { USER_AVATAR } from '../utils/constant'
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true)
@@ -17,7 +17,6 @@ const Login = () => {
   const password = useRef(null)
   const name = useRef(null)
   const [errorMessage, setErrorMessage] = useState(null)
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const toggleSignInForm = () => {
@@ -47,7 +46,7 @@ const Login = () => {
 
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: 'https://avatars.githubusercontent.com/u/10340654?v=4',
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -61,7 +60,6 @@ const Login = () => {
                   photoURL: photoURL,
                 }),
               )
-              navigate('/browse')
               // ...
             })
             .catch((error) => {
@@ -87,7 +85,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user
           console.log(user)
-          navigate('/browse')
           // ...
         })
         .catch((error) => {
@@ -101,12 +98,6 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className='absolute opacity-40'>
-        <img
-          src='https://assets.nflxext.com/ffe/siteui/vlv3/8cc08720-ac1c-4364-bcbd-9495bf0308cd/web/IN-en-20260323-TRIFECTA-perspective_0b8c8e4e-71ee-48bd-8e16-da74f083a838_large.jpg'
-          alt='image'
-        />
-      </div>
       <div className='mx-auto bg-black absolute w-3/12 p-8 text-white my-36 right-0 left-0 rounded-lg opacity-85'>
         <form
           className='w-full'
@@ -157,6 +148,13 @@ const Login = () => {
               : 'Already Registerd? Sign In now'}{' '}
           </a>
         </form>
+      </div>
+      <div>
+        <img
+          className='w-full'
+          src='https://assets.nflxext.com/ffe/siteui/vlv3/8cc08720-ac1c-4364-bcbd-9495bf0308cd/web/IN-en-20260323-TRIFECTA-perspective_0b8c8e4e-71ee-48bd-8e16-da74f083a838_large.jpg'
+          alt='image'
+        />
       </div>
     </div>
   )
