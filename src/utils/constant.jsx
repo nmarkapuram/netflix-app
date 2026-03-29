@@ -3,3 +3,12 @@ export const LOGO =
 
 export const USER_AVATAR =
   'https://avatars.githubusercontent.com/u/10340654?v=4'
+
+export const TMDB_OPTIONS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmM2I1YzFlNDc2ODg1ZTNhYzcxMGYwODljYTkzMWE1MyIsIm5iZiI6MTc3NDc4Nzk5Ny41MzUsInN1YiI6IjY5YzkxZDlkMTY3ZTE0OGU1NjkzMzkwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1gZywlJ-LsjbP8lh5k4avSUhK0HIMCdvRDzeIn8b0vw',
+  },
+}
